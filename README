@@ -1,0 +1,51 @@
+/*
+ * Modified by Luis Majano July 2009
+ * Copyright (c) 2009 Luis Majano
+ * 
+   JS on Load:
+   $(document).ready(function() {
+   		$("##productFilter").keyup(function(){
+			$.uiDivFilter( $(".ProductCollectionTab"), this.value, divIsHidden )
+		})
+	})
+	
+	//Callback when items are hidden
+   function divIsHidden(elem){
+		var words = elem.attr("id").split("_");
+		var id = words[1];
+		
+		if( id ){
+			var pvtab = $("##pvtab_"+id);
+			pvtab.hide();
+		}
+	}
+  
+  Input Declaration For Filter
+  <input size="40" type="text" name="productFilter" id="productFilter" />
+ 
+  Divs:
+  <div id="ptab_#productID#" class="ProductCollectionTab<cfif currentrow mod 2 eq 0> even</cfif>">
+		<!--- Collection Name --->
+		<span><img src="includes/images/organization.png" border="0" align="top" alt="#name#" /> #name#</span>
+   </div>
+ 
+  
+ * Original Creator:
+ * Copyright (c) 2008 Greg Weber greg at gregweber.info
+ * Dual licensed under the MIT and GPL licenses:
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * documentation at http://gregweber.info/projects/uitablefilter
+ *
+ * allows divs to be filtered (made invisible)
+ * <code>
+ * divs = $('.class') or any multi-div selector
+ * $.uiDivFilter( divs, phrase, hiddenCallBack, shownCallBack )
+ * </code>
+ * arguments:
+ *   jQuery object with all divs selectors
+ *   phrase to search for
+ *   hidden call back function that receives the element that got hidden
+ *   shown call back function that receives the element that got showned
+ */
